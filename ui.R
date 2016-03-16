@@ -18,7 +18,9 @@ shinyUI(fluidPage(
            h1(img(src='ligasur.png',class='img-responive',style='height:150px;width:auto'),"¿Quien Ganará la Liga Sur?",style='font-size:36pt'),
            p(class='lead',"Utilizando la diferencia de puntos en la clasificación
              podemos intentar predecir el resultado de los partidos de la próxima sede, y por tanto la clasificacion final")
-           )
+           ,
+           p(tags$b("Que es esto?"),"Es una applicación que acompaña a ",a("esta entrada en el blog LgSmallData",href='http://lgsmalldata.madcases.es/last'))
+    )    
   ),
   fluidRow(
     column(7,
@@ -36,12 +38,16 @@ shinyUI(fluidPage(
                       p("Con esas probabilidades, podemos simular la sede 
                         y calcular la clasificación final. Si hacemos eso miles de veces
                         podemos calcular una probabildad para la posicion que ocupará
-                        cada equipo en la clasificacion final"),
+                        cada equipo en la clasificacion final. Asi por ejemlo, con una K de 0.2, Cartagena
+                        tiene una probabilidad de alrededor del 15% de quedar primero, un 80% de 
+                        quedar segundo y otro 5% de quedar tercero."),
                       h2("Clasificacion final"),
                       plotOutput("picksPlot")
                       ),
              tabPanel("Posiciones",
-                      p("Otra manera de representar esto es para cada posicion cual es la probabilidad de cada equipo de ocuparla"),
+                      p("Otra manera de representar esto es para cada posicion cual es la probabilidad 
+                        de cada equipo de ocuparla. Asi, de nuevo con una K de 0.2, hay alrededor de un 85% 
+                        de posibilidades de que gane Sancti Petri y un 15% de que gane Cartagena."),
                       h2("Clasificacion final"),
                       plotOutput("barsPlot") 
              )
