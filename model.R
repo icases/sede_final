@@ -21,17 +21,22 @@ past$fitted <- predict(model,newdata=past[,3:4],type='response')
 #fitted <- ifelse(fitted > 0.5,1,0)
 diff_range=-15:15;
 pvals<-1/(1+exp(-(-15:15*model$coefficients[1])))
-test_vals=past[test_set_indexes,3:4]
-hits=ifelse(fitted.results==past[test_set_indexes,"Outcome"],1,2)
+test_vals=past[,3:4]
+df_p<-data.frame(diff=-15:15,p=pvals)
 past$guess=ifelse(past$fitted > 0.5,1,0)==past$Outcome;
 main_title=paste("K=",round(model$coefficients[1],dig=3)," p-val=",ano$`Pr(>Chi)`[2]);
-plot(diff_range,pvals,
-     t='l',
-     xlab='diferencia de puntos',
-     ylab='prob victoria local',
-     ylim=c(0,1),
-     main=main_title);
-points(test_vals,col=hits,pch=19)
+ggplot(df_p,aes(x=diff,y=p))+geom_line()+
+      geom_point(data=past,aes(x=diff,y=fitted,color=guess))+
+      ggtitle(main_title)
+# plot(diff_range,pvals,
+#      t='l',
+#      xlab='diferencia de puntos',
+#      ylab='prob victoria local',
+#      ylim=c(0,1),
+#      main=main_title);
+# points(test_vals,col=hits,pch=19)
+
+
 library(ROCR)
 p <- predict(model,newdata=past[test_set_indexes,3:4],type='response')
 pr <- prediction(p, past[test_set_indexes,"Outcome"])
