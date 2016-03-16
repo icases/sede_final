@@ -1,5 +1,5 @@
 past<-read.table("past.tsv",header=T,sep='\t',stringsAsFactors = F)
-plot(Outcome~diff,past)
+#plot(Outcome~diff,past)
 indexes<-1:nrow(past);
 train_set_indexes<-sample(indexes,12)
 test_set_indexes<-indexes[!indexes %in% train_set_indexes]
