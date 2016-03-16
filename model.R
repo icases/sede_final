@@ -17,10 +17,13 @@ fitted.results <- predict(model,newdata=past[test_set_indexes,3:4],type='respons
 fitted.results <- ifelse(fitted.results > 0.5,1,0)
 misClasificError <- mean(fitted.results != past[test_set_indexes,"Outcome"])
 print(paste('Accuracy',1-misClasificError))
+past$fitted <- predict(model,newdata=past[,3:4],type='response')
+#fitted <- ifelse(fitted > 0.5,1,0)
 diff_range=-15:15;
 pvals<-1/(1+exp(-(-15:15*model$coefficients[1])))
 test_vals=past[test_set_indexes,3:4]
 hits=ifelse(fitted.results==past[test_set_indexes,"Outcome"],1,2)
+past$guess=ifelse(past$fitted > 0.5,1,0)==past$Outcome;
 main_title=paste("K=",round(model$coefficients[1],dig=3)," p-val=",ano$`Pr(>Chi)`[2]);
 plot(diff_range,pvals,
      t='l',
