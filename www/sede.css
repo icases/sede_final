@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    text-align:center;
+}
+
+strong {
+    font-weight: normal;
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+  margin-top:1em;
+}
