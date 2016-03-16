@@ -1,10 +1,15 @@
 past<-read.table("past.tsv",header=T,sep='\t',stringsAsFactors = F)
 #plot(Outcome~diff,past)
 indexes<-1:nrow(past);
+get_model<-function(){
 train_set_indexes<-sample(indexes,12)
 test_set_indexes<-indexes[!indexes %in% train_set_indexes]
 train<-past[sample(train_set_indexes,100,replace = T),3:4];
 model <- glm(Outcome ~diff-1,family=binomial(link='logit'),data=train)
+}
+sample_models<-replicate(5000,get_model()$coefficients[1])
+hist(sample_models[abs(sample_models)<1],breaks=seq(-0.2,1.1,0.02),main='K en 5000 modelos',xlab = 'K')
+model<-get_model()
 summary(model)
 ano<-anova(model, test="Chisq")
 ano
