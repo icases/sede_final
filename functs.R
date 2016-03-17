@@ -1,4 +1,6 @@
 library(plyr)
+library(tidyr)
+library(dplyr)
 library(ggplot2)
 library(ggrepel)
 library(scales)
@@ -69,3 +71,39 @@ slopePlot<-function(teams=my_teams,games=my_games,modifiers=NULL,K=.3){
   
 }
 
+get_sede_results<-function(n,teams=my_teams,games=my_games,K=.3,modifiers=NULL){
+  replicate(n,resultado_tras_sede(teams=teams,games=games,K=K,modifiers=modifiers))
+}
+
+tabulate_sedes<-function(thousands,teams=my_teams){
+  n<-ncol(thousands)
+  r<-apply(-thousands,2,rank,ties.method='first')
+  df<-as.data.frame(t(r)) %>% gather(team,rank) %>% group_by(team,rank) %>% tally() 
+  colnames(df)[3]<-'freq';
+  df$freq<-df$freq/n*100;
+  df$team<-factor(df$team,levels=names(sort(teams,decreasing = T)),ordered = T)
+  df
+}
+
+densityPlot<-function(df){
+  ggplot(df, aes(x=rank,y=freq,fill=team))+
+    geom_density(stat='identity')+facet_grid(team~.)+
+    teams_scale+
+    xlab('Posicion')+ylab("%")+
+    theme_bw()+
+    theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
+    theme(axis.title.x=element_text(margin=margin(20,0,0,0),size=18))
+  
+}
+
+
+
+barsPlot<-function(df){
+  ggplot(df, aes(x=rank,y=freq,fill=team))+
+    geom_bar(stat='identity',position='stack',color='black')+
+    teams_scale+
+    xlab('Posicion')+ylab("%")+
+    theme_bw()+
+    theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
+    theme(axis.title.x=element_text(margin=margin(20,0,0,0),size=18))
+}
