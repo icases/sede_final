@@ -7,6 +7,13 @@ my_teams<-c("Chiclana"=18,"Cartagena"=17,"Sevilla"=13,"Fuengirola"=9,"Aguilas"=9
 my_games<-list(c("Sevilla","Aguilas"),c("Fuengirola","Cartagena"),c("Chiclana","Don Patin"),c("Cartagena","Sevilla"),c("Aguilas","Chiclana"),c("Don Patin","Fuengirola"))
 my_modifier<-c("Chiclana"=-2,"Cartagena"=-2,"Sevilla"=2,"Fuengirola"=2,"Aguilas"=-2,"Don Patin"=2);
 
+teams_scale<-scale_fill_manual(values = c('Chiclana'='#59e419',
+                                          'Cartagena'='#f4ff00',
+                                          'Sevilla'='#fff3fd',
+                                          'Aguilas'='#26269B'
+                                          ,'Fuengirola'='#367FF9'
+                                          ,'Don Patin'='#262626'))
+
 p_val_dif<-function(dif,K=.3){
   return((1/(1+exp(-dif*K))))
 }
@@ -62,9 +69,3 @@ slopePlot<-function(teams=my_teams,games=my_games,modifiers=NULL,K=.3){
   
 }
 
-teams_scale<-scale_fill_manual(values = c('Chiclana'='#59e419',
-                                                'Cartagena'='#f4ff00',
-                                                'Sevilla'='#fff3fd',
-                                                'Aguilas'='#26269B'
-                                                ,'Fuengirola'='#367FF9'
-                                                ,'Don Patin'='#262626'))
