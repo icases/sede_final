@@ -28,7 +28,7 @@ shinyUI(fluidPage(
              tabPanel("Partidos",
                       p("Basandonos en la diferencia de puntos en la clasificacion
                         y un conjunto de modificadores para reflejar las condiciones
-                        particulares de esta sede, podemos calcular la probavilidad 
+                        particulares de esta sede, podemos calcular la probabilidad 
                         de cada equipo de ganar su partidos."),
                       h2("Probabilidad de victoria del Equipo local"),
 
@@ -41,14 +41,14 @@ shinyUI(fluidPage(
                         cada equipo en la clasificacion final. Asi por ejemlo, con una K de 0.2, Cartagena
                         tiene una probabilidad de alrededor del 15% de quedar primero, un 80% de 
                         quedar segundo y otro 5% de quedar tercero."),
-                      h2("Clasificacion final"),
+                      h2("Clasificación final"),
                       plotOutput("picksPlot")
                       ),
              tabPanel("Posiciones",
-                      p("Otra manera de representar esto es para cada posicion cual es la probabilidad 
-                        de cada equipo de ocuparla. Asi, de nuevo con una K de 0.2, hay alrededor de un 85% 
+                      p("Otra manera de representar esto es, para cada posición, calcular la probabilidad 
+                        de cada equipo de ocuparla. Así, de nuevo con una K de 0.2, hay alrededor de un 85% 
                         de posibilidades de que gane Sancti Petri y un 15% de que gane Cartagena."),
-                      h2("Clasificacion final"),
+                      h2("Clasificación final"),
                       plotOutput("barsPlot") 
              )
              )
@@ -59,7 +59,7 @@ shinyUI(fluidPage(
   
   column(5,
          wellPanel(
-    p("K regula como de denpendiente es el resultado de la diferencia de puntos entre los dos equipos. K=0 quiere decir que el resultado es al azar, mientras que  K=1 ( o mayores ) indica que prácticamente siempre ganará el  el que tenga mas puntos"),
+    p("K regula como de dependiente es el resultado de un partido de la diferencia de puntos entre los dos equipos. K=0 quiere decir que el resultado es al azar, mientras que  K=1 ( o mayores ) indica que prácticamente siempre ganará el  el que tenga más puntos"),
     
     sliderInput("K",
                 "K:",
@@ -70,7 +70,7 @@ shinyUI(fluidPage(
   ),
   wellPanel(
     p("Podemos ajustar la fuerza o debilidad de cada equipo, mediante un factor de corrección. 
-      Por ejemplo, podemos suponer que Aguilas lo  hará mejor de lo normal por jugar en casa,
+      Por ejemplo, podemos suponer que Águilas lo  hará mejor de lo normal por jugar en casa,
       o que Don Patín jugará muy motivado debido a su racha de dos victorias"),
     div(class='center-block',checkboxInput("mod",
                   "Usar modificadores")),
