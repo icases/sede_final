@@ -58,4 +58,11 @@ shinyServer( function(input, output) {
   barsPlot(df)
   })
   
+  output$dfTable <- renderTable({
+    df<-get_df()
+    ta<-spread(df,team,freq,fill='-');
+    ta
+  },align=rep('r',8),
+  include.rownames = FALSE
+  )
 })

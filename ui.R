@@ -34,30 +34,38 @@ shinyUI(fluidPage(
 
                       plotOutput("slopePlot")
                       ),
-             tabPanel("Equipos",
+             tabPanel("Tabla",
                       p("Con esas probabilidades, podemos simular la sede 
                         y calcular la clasificación final*. Si hacemos eso miles de veces
                         podemos calcular una probabildad para la posición que ocupará
-                        cada equipo en la clasificación final. Asi por ejemlo, con una K de 0.2, Cartagena
-                        tiene una probabilidad de alrededor del 15% de quedar primero, un 80% de 
-                        quedar segundo y otro 5% de quedar tercero."),
+                        cada equipo en la clasificación final. "),
                       h2("Clasificación final"),
-                      plotOutput("picksPlot")
+                      tableOutput("dfTable") 
                       ,
                       p(style='font-size:small',"* Este análisis no considera la posibilidad de que los partidos acaben
                         en empate, en cuyo caso la distribución de puntos sería distinta, y en caso de empate a puntos 
                         en la clasifición final asigna los puestos en el orden actual, ya que en este modelo 
                         no se predice el gol average de cada equipo.")
              ),
-             tabPanel("Posiciones",
-                      p("Otra manera de representar esto es, para cada posición, calcular la probabilidad 
-                        de cada equipo de ocuparla. Así, de nuevo con una K de 0.2, hay alrededor de un 85% 
-                        de posibilidades de que gane Sancti Petri y un 15% de que gane Cartagena."),
+             tabPanel("Por Posiciones",
+                      p("Una manera representar esto es, para cada posición, calcular la probabilidad 
+                        de cada equipo de ocuparla. Así, de nuevo con una K de 0.2, hay alrededor de un 87% 
+                        de posibilidades de que gane Sancti Petri y un 12% de que gane Cartagena y 
+                        menos de un 1% de que lo haga Sevilla."),
                       h2("Clasificación final"),
+                      
                       plotOutput("barsPlot") 
+             ),
+             tabPanel("Por Equipos",
+                      p("También podemos representar la prpobabilidad de ocupar cada posicion para cada equipo . Asi,
+                          por ejemlo, con una K de 0.2, Cartagena tiene una probabilidad de alrededor del 13% de quedar
+                          primero, un 83% de quedar segundo y otro 4% de quedar tercero."),
+                      h2("Clasificación final"),
+                      plotOutput("picksPlot")
+                      )
+             
              )
-             )
-             )
+    )
   ,
   
   # Sidebar with a slider input for number of bins
