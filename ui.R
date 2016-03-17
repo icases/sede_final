@@ -9,7 +9,7 @@ library(shiny)
 library(shinyjs)
 shinyUI(fluidPage(
   useShinyjs(),
-  tags$head(tags$script(src="sede.js")),
+  #tags$head(tags$script(src="sede.js")),
   tags$head(tags$link(href="http://fonts.googleapis.com/css?family=Oswald",type="text/css",type='text/css',rel='stylesheet')),
   tags$head(tags$link(href="sede.css",type="text/css",type='text/css',rel='stylesheet')),
   title='Quien Ganará la Liga Sur',
