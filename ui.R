@@ -36,14 +36,19 @@ shinyUI(fluidPage(
                       ),
              tabPanel("Equipos",
                       p("Con esas probabilidades, podemos simular la sede 
-                        y calcular la clasificación final. Si hacemos eso miles de veces
-                        podemos calcular una probabildad para la posicion que ocupará
-                        cada equipo en la clasificacion final. Asi por ejemlo, con una K de 0.2, Cartagena
+                        y calcular la clasificación final*. Si hacemos eso miles de veces
+                        podemos calcular una probabildad para la posición que ocupará
+                        cada equipo en la clasificación final. Asi por ejemlo, con una K de 0.2, Cartagena
                         tiene una probabilidad de alrededor del 15% de quedar primero, un 80% de 
                         quedar segundo y otro 5% de quedar tercero."),
                       h2("Clasificación final"),
                       plotOutput("picksPlot")
-                      ),
+                      ,
+                      p(style='font-size:small',"* Este análisis no considera la posibilidad de que los partidos acaben
+                        en empate, en cuyo caso la distribución de puntos sería distinta, y en caso de empate a puntos 
+                        en la clasifición final asigna los puestos en el orden actual, ya que en este modelo 
+                        no se predice el gol average de cada equipo.")
+             ),
              tabPanel("Posiciones",
                       p("Otra manera de representar esto es, para cada posición, calcular la probabilidad 
                         de cada equipo de ocuparla. Así, de nuevo con una K de 0.2, hay alrededor de un 85% 
