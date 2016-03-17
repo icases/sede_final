@@ -1,4 +1,3 @@
-library(plyr)
 library(tidyr)
 library(dplyr)
 library(ggplot2)
@@ -53,7 +52,7 @@ resultado_tras_sede<-function(teams=my_teams,games=my_games,modifiers=NULL,K=.3)
 slopePlot<-function(teams=my_teams,games=my_games,modifiers=NULL,K=.3){
   lteams<-teams;
   if(!is.null(modifiers)) lteams=modify(teams,modifiers)
-  df_games<-ldply(games);
+  df_games<-as.data.frame(do.call(rbind, games));
   dif=apply(df_games,1,function(x)lteams[x[1]]-lteams[x[2]])
   maxDiff=max(abs(dif))
   dif_range=c(-maxDiff:maxDiff);
