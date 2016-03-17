@@ -64,7 +64,10 @@ shinyUI(fluidPage(
   
   column(5,
          wellPanel(
-    p("K regula como de dependiente es el resultado de un partido de la diferencia de puntos entre los dos equipos. K=0 quiere decir que el resultado es al azar, mientras que  K=1 ( o mayores ) indica que prácticamente siempre ganará el  el que tenga más puntos"),
+    p(style='font-size:small',"K regula como de dependiente es el resultado de un partido 
+      de la diferencia de puntos entre los dos equipos. K=0 quiere decir que el resultado
+      es al azar, mientras que  K=1 ( o mayores ) indica que prácticamente siempre ganará 
+      el  el que tenga más puntos"),
     
     sliderInput("K",
                 "K:",
@@ -74,7 +77,7 @@ shinyUI(fluidPage(
     
   ),
   wellPanel(
-    p("Podemos ajustar la fuerza o debilidad de cada equipo, mediante un factor de corrección. 
+    p(style='font-size:small',"Podemos ajustar la fuerza o debilidad de cada equipo, mediante un factor de corrección. 
       Por ejemplo, podemos suponer que Águilas lo  hará mejor de lo normal por jugar en casa,
       o que Don Patín jugará muy motivado debido a su racha de dos victorias"),
     div(class='center-block',checkboxInput("mod",
