@@ -64,9 +64,10 @@ slopePlot<-function(teams=my_teams,games=my_games,modifiers=NULL,K=.3){
     geom_point(data=df_games,aes(x=dif,y=p_val_dif(dif,K)),color='red')+
     xlab("Diferencia de puntos (local - visitante)")+
     ylab("Probabilidad de victoria del equipo local")+
-    geom_text_repel(data=df_games,aes(label=paste(local,visitante,sep='-'),x=dif,y=p_val_dif(dif,K)))+
-    theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
-    theme(axis.title.x=element_text(margin=margin(20,0,0,0),size=18))
+    geom_text_repel(data=df_games,aes(label=paste(local,visitante,sep='-'),x=dif,y=p_val_dif(dif,K)),size=6)+
+    theme(text=element_text(size=20))+
+    theme(axis.title.y=element_text(margin=margin(0,20,0,0),size=18))+
+    theme(axis.title.x=element_text(margin=margin(30,0,0,0),size=18))
   
 }
 
@@ -88,8 +89,10 @@ densityPlot<-function(df){
   ggplot(df, aes(x=rank,y=freq,fill=team))+
     geom_density(stat='identity')+facet_grid(team~.)+
     scale_fill_manual(guide='none',values=teams_scale)+
+    scale_x_continuous(breaks=1:6)+
     xlab('Posicion')+ylab("%")+
     theme_bw()+
+    theme(text=element_text(size=20))+
     theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
     theme(axis.title.x=element_text(margin=margin(20,0,0,0),size=18))
   
@@ -101,8 +104,10 @@ barsPlot<-function(df){
   ggplot(df, aes(x=rank,y=freq,fill=team))+
     geom_bar(stat='identity',position='stack',color='black')+
     scale_fill_manual(values=teams_scale,name='Equipos')+
+    scale_x_continuous(breaks=1:6)+
     xlab('Posicion')+ylab("%")+
     theme_bw()+
+    theme(text=element_text(size=24))+
     theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
     theme(axis.title.x=element_text(margin=margin(20,0,0,0),size=18))
 }
