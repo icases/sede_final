@@ -19,7 +19,7 @@ shinyUI(fluidPage(
            p(class='lead',"Utilizando la diferencia de puntos en la clasificación
              podemos intentar predecir el resultado de los partidos de la próxima sede, y por tanto la clasificacion final")
            ,
-           p(tags$b("Que es esto?"),"Es una applicación que acompaña a ",a("esta entrada en el blog LgSmallData",href='http://lgsmalldata.madcases.es/last'))
+           p(tags$b("Que es esto?"),"Es una applicación que acompaña a ",a("esta entrada en el blog LgSmallData",href='http://lgsmalldata.madcases.es/quien-ganara-ligasur/'))
     )    
   ),
   fluidRow(
