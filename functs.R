@@ -4,16 +4,16 @@ library(ggplot2)
 library(ggrepel)
 library(scales)
 
-my_teams<-c("Chiclana"=18,"Cartagena"=17,"Sevilla"=13,"Fuengirola"=9,"Aguilas"=9,"Don Patin"=6);
-my_games<-list(c("Sevilla","Aguilas"),c("Fuengirola","Cartagena"),c("Chiclana","Don Patin"),c("Cartagena","Sevilla"),c("Aguilas","Chiclana"),c("Don Patin","Fuengirola"))
-my_modifier<-c("Chiclana"=-2,"Cartagena"=-2,"Sevilla"=2,"Fuengirola"=2,"Aguilas"=-2,"Don Patin"=2);
+my_teams<-c("Sancti Petri"=18,"Cartagena"=17,"Sevilla"=13,"Fuengirola"=9,"Águilas"=9,"Don Patín"=6);
+my_games<-list(c("Sevilla","Águilas"),c("Fuengirola","Cartagena"),c("Sancti Petri","Don Patín"),c("Cartagena","Sevilla"),c("Águilas","Sancti Petri"),c("Don Patín","Fuengirola"))
+my_modifier<-c("Sancti Petri"=-2,"Cartagena"=-2,"Sevilla"=2,"Fuengirola"=2,"Águilas"=-2,"Don Patín"=2);
 
 teams_scale<-scale_fill_manual(values = c('Chiclana'='#59e419',
                                           'Cartagena'='#f4ff00',
                                           'Sevilla'='#fff3fd',
-                                          'Aguilas'='#26269B'
+                                          'Águilas'='#26269B'
                                           ,'Fuengirola'='#367FF9'
-                                          ,'Don Patin'='#262626'))
+                                          ,'Don Patín'='#262626')
 
 p_val_dif<-function(dif,K=.3){
   return((1/(1+exp(-dif*K))))
