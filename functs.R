@@ -6,7 +6,7 @@ library(scales)
 
 my_teams<-c("Sancti Petri"=18,"Cartagena"=17,"Sevilla"=13,"Fuengirola"=9,"Águilas"=9,"Don Patín"=6);
 my_games<-list(c("Sevilla","Águilas"),c("Fuengirola","Cartagena"),c("Sancti Petri","Don Patín"),c("Cartagena","Sevilla"),c("Águilas","Sancti Petri"),c("Don Patín","Fuengirola"))
-my_modifier<-c("Sancti Petri"=-2,"Cartagena"=-2,"Sevilla"=2,"Fuengirola"=2,"Águilas"=-2,"Don Patín"=2);
+my_modifier<-c("Sancti Petri"=-.4,"Cartagena"=0,"Sevilla"=-.4,"Fuengirola"=-.4,"Águilas"=1,"Don Patín"=.6);
 
 teams_scale  = c('Sancti Petri'='#59e419',
                                           'Cartagena'='#f4ff00',
