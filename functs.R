@@ -8,7 +8,7 @@ my_teams<-c("Sancti Petri"=18,"Cartagena"=17,"Sevilla"=13,"Fuengirola"=9,"Águil
 my_games<-list(c("Sevilla","Águilas"),c("Fuengirola","Cartagena"),c("Sancti Petri","Don Patín"),c("Cartagena","Sevilla"),c("Águilas","Sancti Petri"),c("Don Patín","Fuengirola"))
 my_modifier<-c("Sancti Petri"=-2,"Cartagena"=-2,"Sevilla"=2,"Fuengirola"=2,"Águilas"=-2,"Don Patín"=2);
 
-teams_scale<-scale_fill_manual(values = c('Chiclana'='#59e419',
+teams_scale  = c('Sancti Petri'='#59e419',
                                           'Cartagena'='#f4ff00',
                                           'Sevilla'='#fff3fd',
                                           'Águilas'='#26269B'
@@ -87,7 +87,7 @@ tabulate_sedes<-function(thousands,teams=my_teams){
 densityPlot<-function(df){
   ggplot(df, aes(x=rank,y=freq,fill=team))+
     geom_density(stat='identity')+facet_grid(team~.)+
-    teams_scale+
+    scale_fill_manual(guide='none',values=teams_scale)+
     xlab('Posicion')+ylab("%")+
     theme_bw()+
     theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
@@ -100,7 +100,7 @@ densityPlot<-function(df){
 barsPlot<-function(df){
   ggplot(df, aes(x=rank,y=freq,fill=team))+
     geom_bar(stat='identity',position='stack',color='black')+
-    teams_scale+
+    scale_fill_manual(values=teams_scale,name='Equipos')+
     xlab('Posicion')+ylab("%")+
     theme_bw()+
     theme(axis.title.y=element_text(margin=margin(0,10,0,0),size=18))+
